@@ -5,11 +5,9 @@ import time
 import cloudscraper
 
 
-urls = ['https://m.ddtxt8.cc/book/73206/{}.html'.format(i) for i in range(1, 3)]
 uri = r'https://m.ddtxt8.cc'
 book = r'/book/73206/'
-# urls = ['https://m.ddtxt8.cc/book/73206/{}.html'.format(i) for i in range(1, 3257)]
-path = r'/Users/zhangzhen/Documents/Code/Self/downloadtxt/zz/'
+path = r'~/Documents/Code/Self/downloadtxt/zz/'
 
 scraper = cloudscraper.create_scraper()
 
@@ -23,8 +21,7 @@ def get_text(local_url):
     print(real_title)
 
     text = selector.xpath('//*[@id="chaptercontent"]/text()')
-    # remove 请收藏：https://m.ddtxt8.cc
-    # replace two space to new line
+    # TODO: replace two space to new line
     with open(path+real_title+'.txt', 'a+', encoding='utf-8') as f:
         for i in text:
             s1 = re.sub("请收藏：https://m.ddtxt8.cc", "", i)
@@ -36,7 +33,7 @@ def get_text(local_url):
 
 
 if __name__ == '__main__':
-    for page_num in range(4, 3257):
+    for page_num in range(1, 3257):
         url = uri + book + str(page_num) + '.html'
         print(url)
         next_page = get_text(url)
