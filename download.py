@@ -11,6 +11,7 @@ path = r'~/Documents/Code/Self/downloadtxt/zz/'
 
 scraper = cloudscraper.create_scraper()
 
+
 def get_text(local_url):
     # r = requests.get(local_url)
     r = scraper.get(local_url)
